@@ -1,0 +1,187 @@
+/* Smooth fade-in animation for the whole card */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Soft pulse animation for output text */
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.7; }
+    50% { transform: scale(1.05); opacity: 1; }
+    100% { transform: scale(1); opacity: 0.7; }
+}
+
+/* Global styles */
+body {
+    background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+    font-family: "Poppins", sans-serif;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Card-like wrapper */
+.container-lg {
+    background: #ffffff;
+    padding: 45px 55px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    width: 480px;
+    text-align: center;
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* Heading */
+h1 {
+    font-weight: 600;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+/* Bigger, animated input field */
+#input {
+    width: 100%;
+    padding: 18px 20px;       /* Larger input */
+    border-radius: 12px;
+    border: 2px solid #ddd;
+    margin-bottom: 25px;
+    transition: 0.3s ease;
+    outline: none;
+    font-size: 18px;          /* Bigger font */
+}
+
+#input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 12px rgba(0, 123, 255, 0.25);
+    transform: scale(1.02);
+}
+
+/* Button styling */
+#btn {
+    width: 100%;
+    padding: 16px;
+    border-radius: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    transition: 0.3s ease;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+#btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px) scale(1.02);   /* Hover animation */
+    box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+}
+
+/* Output animation */
+.output {
+    margin-top: 30px;
+    font-size: 24px;
+    font-weight: 600;
+    color: #444;
+    min-height: 40px;
+    animation: pulse 2s infinite ease-in-out;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .container-lg {
+        width: 90%;
+        padding: 35px;
+    }
+}
+
+/* Floating emoji animation */
+@keyframes floatEmoji {
+    0% {
+        transform: translateY(110vh) rotate(0deg);
+        opacity: 0.2;
+    }
+    50% { opacity: 1; }
+    100% {
+        transform: translateY(-120vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Sparkle animation */
+@keyframes sparkle {
+    0% { transform: scale(0) rotate(0deg); opacity: 0; }
+    50% { transform: scale(1.2) rotate(180deg); opacity: 1; }
+    100% { transform: scale(0) rotate(360deg); opacity: 0; }
+}
+
+/* Background gradient animation */
+@keyframes bgShift {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
+}
+
+/* FULL CRAZY BACKGROUND WRAPPER */
+.crazy-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #ffe8e8, #e8f1ff, #fdf2ff, #e6fff6);
+    background-size: 300% 300%;
+    animation: bgShift 15s ease infinite;
+    overflow: hidden;
+    z-index: -1;
+}
+
+/* EMOJI LAYER */
+.emoji-layer span {
+    position: absolute;
+    font-size: 45px;
+    animation: floatEmoji linear infinite;
+    opacity: 0.7;
+}
+
+/* 15 emojis with random positions + speeds */
+.emoji-layer span:nth-child(1)  { left: 5%;  animation-duration: 13s; }
+.emoji-layer span:nth-child(2)  { left: 12%; animation-duration: 10s; animation-delay: 1s; }
+.emoji-layer span:nth-child(3)  { left: 20%; animation-duration: 15s; animation-delay: 3s; }
+.emoji-layer span:nth-child(4)  { left: 30%; animation-duration: 14s; }
+.emoji-layer span:nth-child(5)  { left: 40%; animation-duration: 12s; animation-delay: 2s; }
+.emoji-layer span:nth-child(6)  { left: 50%; animation-duration: 16s; animation-delay: 4s; }
+.emoji-layer span:nth-child(7)  { left: 60%; animation-duration: 11s; }
+.emoji-layer span:nth-child(8)  { left: 70%; animation-duration: 17s; animation-delay: 3s; }
+.emoji-layer span:nth-child(9)  { left: 80%; animation-duration: 13s; }
+.emoji-layer span:nth-child(10) { left: 90%; animation-duration: 18s; animation-delay: 1s; }
+.emoji-layer span:nth-child(11) { left: 15%; animation-duration: 20s; animation-delay: 2.5s; }
+.emoji-layer span:nth-child(12) { left: 27%; animation-duration: 12s; animation-delay: .5s; }
+.emoji-layer span:nth-child(13) { left: 55%; animation-duration: 19s; }
+.emoji-layer span:nth-child(14) { left: 73%; animation-duration: 14s; animation-delay: 1.8s; }
+.emoji-layer span:nth-child(15) { left: 88%; animation-duration: 21s; }
+
+/* SPARKLE PARTICLES */
+.sparkle-layer span {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 0 10px white;
+    animation: sparkle 4s infinite ease-in-out;
+    opacity: 0.8;
+}
+
+/* Random sparkle positions */
+.sparkle-layer span:nth-child(1) { top: 20%; left: 10%; animation-delay: .5s; }
+.sparkle-layer span:nth-child(2) { top: 40%; left: 25%; animation-delay: 2s; }
+.sparkle-layer span:nth-child(3) { top: 60%; left: 70%; animation-delay: 1s; }
+.sparkle-layer span:nth-child(4) { top: 80%; left: 40%; }
+.sparkle-layer span:nth-child(5) { top: 10%; left: 85%; animation-delay: 3s; }
+.sparkle-layer span:nth-child(6) { top: 50%; left: 55%; animation-delay: 2.6s; }
+.sparkle-layer span:nth-child(7) { top: 73%; left: 20%; }
+.sparkle-layer span:nth-child(8) { top: 15%; left: 45%; animation-delay: 1.4s; }
+.sparkle-layer span:nth-child(9) { top: 88%; left: 60%; animation-delay: 2.2s; }
+.sparkle-layer span:nth-child(10){ top: 33%; left: 78%; }
+
+/* Everything else (your form etc.) stays as is */
